@@ -7,8 +7,8 @@ module.exports = {
   entry: {
     global: path.resolve(__dirname, "global.js"),
     index: path.resolve(__dirname, "index.js"),
-    // listProducts: "./list-products.js",
-    // addProducts: "./add-products.js",
+    listProducts: path.resolve(__dirname, "list-products.js"),
+    addProducts: path.resolve(__dirname, "add-products.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -60,16 +60,16 @@ module.exports = {
       chunks: ["global", "index"],
       filename: "index.html",
     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./list-products.html",
-    //   chunks: ["listProducts", "global"],
-    //   filename: "list-products.html",
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: "./add-products.html",
-    //   chunks: ["addProducts", "global"],
-    //   filename: "add-products.html",
-    // }),
+    new HtmlWebpackPlugin({
+       template: "./list-products.html",
+       chunks: ["listProducts", "global"],
+       filename: "list-products.html",
+     }),
+     new HtmlWebpackPlugin({
+       template: "./add-products.html",
+       chunks: ["addProducts", "global"],
+       filename: "add-products.html",
+     }),
   ],
   optimization: {
     minimize: true,
@@ -82,7 +82,7 @@ module.exports = {
     static: "./dist",
     port: 9000,
     open: true,
-    hot: true,
+    hot: false,
   },
   resolve: {
     alias: {
